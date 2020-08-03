@@ -6,6 +6,7 @@ from flask_restful import reqparse
 from textblob.compat import unicode
 from werkzeug.exceptions import abort
 import textanalyzer as ta
+import nlpMethods as nm
 
 app = Flask(__name__)
 
@@ -32,6 +33,12 @@ def analyze_text():
         elif op == "tags":
             tags = ta.get_tags(text)
             result.append({"tags": tags})
+        elif op == "spelling":
+            corrections = nm.spellingCheck(text)
+            result.append({"spelling": corrections})
+        elif op == "translation":
+            translation = nm.translatePhrase(text)
+            result.append({"translation": translation})
         else:
             abort(400)
     return jsonify(result), 201
