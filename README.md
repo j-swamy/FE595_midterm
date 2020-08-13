@@ -38,5 +38,7 @@ Required Installation: Textblob, nltk, pycountry
     
             $ curl -i -H "Content-Type: application/json" -X POST -d '{"text":"Read a good book"}' 'http://hostname:8088/analyze?op=sentiment&op=spelling'
     
-
+3.  A sample service has been deployed on AWS host:
+            
+        http://18.218.94.216:8088
     
